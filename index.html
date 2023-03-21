@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RANDOM HEX CODE CTRL V</title>
+</head>
+<body>
+    <div class="card">
+        <h2 class="Header">Random Color Generator</h2>
+        <box style = "background-color:rgb(15, 0, 0)" class ="colorCard"></box>
+        <p>Click inside the box to change color</p>
+        
+        <h1>Your HEX code</h1>
+        
+        <button class="button">Copy to clipboard</button>
+    </div>
+    <script type="text/javascript">
+    var i = 0;
+    var color = ([""]);
+    var j = 0;
+        for (j = j; j < color.length; j++) {
+              document.querySelector("box").addEventListener("click", function () {
+                let randomColor = [`#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, "0")}`];
+                console.log(randomColor);
+                color.push([randomColor]);
+                i = i < color.length ? ++i : 0;
+                document.querySelector("box").style.background = color[i];
+
+                let clipboard = document.querySelector("h1").textContent = `${[randomColor]}`;
+
+                const copy = (text) => navigator.clipboard.writeText(text);  
+                const button = document.querySelector("button");
+                button.addEventListener("click", () => {
+                    copy(clipboard)
+                    console.log(copy(clipboard)); //whenever we call the copy function inside an Event, it will copy the text chosen to be shown
+                });
+    })
+}
+console.table(color);
+    </script> 
+</body> 
+</html>
+
